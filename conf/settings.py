@@ -68,6 +68,7 @@ MEDIA_URL = '/media/'
 
 REACT_APP_DIR = 'frontend/static'
 ROOT_URLCONF = 'conf.urls'
+AUTH_USER_MODEL = 'account.MyUser'
 
 TEMPLATES = [
     {
