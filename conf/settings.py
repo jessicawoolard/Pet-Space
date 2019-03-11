@@ -18,7 +18,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'petspace-final.herokuapp.com'
+    'petspace-final.herokuapp.com',
 ]
 
 
@@ -100,7 +100,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'PestSpace',
+            'NAME': 'PetSpace',
             'USER': 'jessicawoolard',
             'PASSWORD': 'SafePass',
             'HOST': 'localhost',

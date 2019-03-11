@@ -13,6 +13,7 @@ psycopg2 = "*"
 dj-database-url = "*"
 djangorestframework = "*"
 pillow = "*"
+django-qr-code = "*"
 
 [requires]
 python_version = "3.7"
