@@ -1,73 +1,38 @@
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import AbstractBaseUser, UnicodeUsernameValidator
 from localflavor.us.models import USStateField
 
 
-class MyUserManager(BaseUserManager):
-    def create_user(self, email, password=None):
-        """
-        Creates and saves a User with the given email, date of
-        birth and password.
-        """
-        if not email:
-            raise ValueError('Users must have an email address')
-
-        user = self.model(
-            email=self.normalize_email(email))
-
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, password):
-        """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
-        """
-        user = self.create_user(
-            email,
-            password=password)
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
-
-
 class MyUser(AbstractBaseUser):
+    username_validator = UnicodeUsernameValidator()
+
+    username = None
     name = models.CharField(max_length=100)
-    email = models.EmailField(
-        verbose_name='email address',
-        max_length=255,
-        unique=True,
-    )
+    email = models.EmailField('email address', unique=True)
+    phone_number = models.IntegerField()
     street_address = models.CharField(max_length=255, default='')
     street_address_2 = models.CharField(max_length=255, blank=True, default='')
     city = models.CharField(max_length=255, default='')
     state = USStateField()
     zip_code = models.IntegerField()
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
 
-    objects = MyUserManager()
-
+    EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
-    def __str__(self):
-        return self.email
+    def normalize_email(cls, email):
+        """
+        Normalize the email address by lowercasing the domain part of the it.
+        """
+        email = email or ''
+        try:
+            email_name, domain_part = email.strip().rsplit('@', 1)
+        except ValueError:
+            pass
+        else:
+            email = '@'.join([email_name, domain_part.lower()])
+        return email
 
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        # Simplest possible answer: All admins are staff
-        return self.is_admin
+    # def clean(self):
+    #     super().clean()
+    #     self.email = self.__class__.objects.normalize_email(self.email)

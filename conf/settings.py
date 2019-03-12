@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend', 'pets',
-    'rest_framework', 'account'
+    'rest_framework', 'account',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,8 @@ MEDIA_URL = '/media/'
 REACT_APP_DIR = 'frontend/static'
 ROOT_URLCONF = 'conf.urls'
 AUTH_USER_MODEL = 'account.MyUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 TEMPLATES = [
     {
