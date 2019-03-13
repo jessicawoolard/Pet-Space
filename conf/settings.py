@@ -32,8 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'frontend', 'pets',
-    'rest_framework', 'account',
-    'crispy_forms',
+    'rest_framework', 'accounts',
+    'crispy_forms', 'phone_field',
 ]
 
 MIDDLEWARE = [
@@ -69,14 +69,19 @@ MEDIA_URL = '/media/'
 
 REACT_APP_DIR = 'frontend/static'
 ROOT_URLCONF = 'conf.urls'
-AUTH_USER_MODEL = 'account.MyUser'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# AUTH_USER_MODEL = 'account.MyUser'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'petspacegville@gmail.com'
+EMAIL_HOST_PASSWORD = 'SafePass'
+EMAIL_PORT = 587
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,7 +109,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'PetSpace',
+            'NAME': 'Pet_Space',
             'USER': 'jessicawoolard',
             'PASSWORD': 'SafePass',
             'HOST': 'localhost',
@@ -158,3 +163,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+LOGIN_REDIRECT_URL = 'pets:index'
+LOGOUT_REDIRECT_URL = 'pets:index'

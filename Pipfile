@@ -16,6 +16,8 @@ pillow = "*"
 django-qr-code = "*"
 django-localflavor = "*"
 django-crispy-forms = "*"
+django-phone-field = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

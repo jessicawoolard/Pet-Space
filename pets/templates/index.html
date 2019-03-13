@@ -3,4 +3,17 @@
 {% block content %}
 
 
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <p><a href="{% url 'pets:logout' %}">Logout</a></p>
+    {% else %}
+        <div>
+            <p>You are not logged in</p>
+            <button><a href="{% url 'pets:login' %}">Login</a></button>
+        </div>
+        <div>
+        <button><a href="{% url 'accounts:signup' %}">Signup</a></button>
+        </div>
+    {% endif %}
+
 {% endblock %}
