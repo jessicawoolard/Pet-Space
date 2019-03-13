@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
     <head>
@@ -8,17 +9,53 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+
 
         <title>Pet Space</title>
     </head>
     <body>
         <div class="container">
             <header>
+                <div class="header_navigation">
+                    <p>Menu</p>
+                    <p></p>
+                </div>
+
 
             </header>
             {% block content %}
 
             {% endblock %}
+        <footer>
+            <div class="footer_navigation">
+                <p>
+                    <a href="#">About Us</a>
+                </p>
+            </div>
+            <div class="footer_navigation">
+                <p>
+                    <a href="#">Our Story</a>
+                </p>
+            </div>
+            <div class="footer_navigation">
+                <p>
+                    <i class="large material-icons">pets</i>
+                </p>
+            </div>
+            <div class="footer_navigation">
+                <p>
+                    <a href="#">Contact</a>
+                </p>
+            </div>
+            <div class="footer_navigation">
+                <p>
+                    <a href="#">Photo Gallery</a>
+                </p>
+            </div>
+        </footer>
+        </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
                     crossorigin="anonymous"></script>
@@ -28,6 +65,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
                     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                     crossorigin="anonymous"></script>
-        </div>
+
+
     </body>
 </html>
