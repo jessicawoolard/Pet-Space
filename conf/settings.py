@@ -34,8 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'users.apps.UsersConfig',
 
-    'frontend', 'pet_profile',
-    'accounts', 'user_profile',
+    'frontend', 'petspace',
+    'accounts',
     
     'crispy_forms', 'phone_field',
     'rest_framework',

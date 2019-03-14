@@ -1,6 +1,15 @@
 body header {
   border-bottom: black solid 2px;
 }
+body .pet_name {
+  margin: 10px;
+}
+body .current_pet_link {
+  display: inline-flex;
+}
+body img {
+  width: 200px;
+}
 body .footer_navigation {
   display: inline-block;
 }

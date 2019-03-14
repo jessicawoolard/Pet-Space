@@ -1,21 +1,20 @@
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView
 from django.urls import reverse_lazy
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Pet
 from .forms import PetForm
+
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class AddPetView(CreateView):
     template_name = 'add_pet_form.html'
     model = Pet
     form_class = PetForm
-    # success_url = reverse_lazy('pet_profile:pet_profile')
 
-    # @login_required(login_url='petspace_info:login')
     def form_valid(self, form):
         obj = form.save(commit=False)
         # user = User.objects.get(pk=1)
@@ -25,22 +24,10 @@ class AddPetView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('pet_profile:pet_profile', kwargs={'pk': self.object.pk})
-
-    # def new_pet(request):
-    #     if request.method == 'POST':
-    #         form = PetForm(request.POST)
-    #         if form.is_valid():
-    #             return  HttpResponseRedirect('pet_profile')
-    #     else:
-    #         form = PetForm()
-    #         return render(request, 'add_pet_form.html', {'form': form})
-    # #
-    # def get_success_url(self,):
-    #     return reverse('petspace_info:index')
+        return reverse('petspace:dashboard', kwargs={'pk': self.object.pk})
 
 
-class PetProfileView(TemplateView):
+class PetProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'pet_profile.html'
     # success_url = reverse('p')
 
@@ -51,5 +38,18 @@ class PetProfileView(TemplateView):
             'pet': pet
         }
         return context
+
+
+class UserDashboardView(LoginRequiredMixin, ListView):
+    template_name = 'user_dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pets'] = Pet.objects.filter(user=self.request.user)
+        return context
+
+    def get_queryset(self):
+        return Pet.objects.filter(user=self.request.user)
+
 
 

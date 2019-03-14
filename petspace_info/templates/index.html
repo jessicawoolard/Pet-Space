@@ -5,6 +5,9 @@
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
         <p><a href="{% url 'petspace_info:logout' %}">Logout</a></p>
+        <div>
+            <a href="{% url 'petspace:dashboard' %}">Go to my dashboard</a>
+        </div>
     {% else %}
         <div>
             <p>You are not logged in</p>

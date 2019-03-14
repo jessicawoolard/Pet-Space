@@ -7,8 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
-    path('', include('pet_profile.urls')),
-    path('', include('user_profile.urls')),
+    path('', include('petspace.urls')),
     path('', include('petspace_info.urls')),
 ]
 # serve media and static files in dev

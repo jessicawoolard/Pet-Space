@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pet_profile', '0001_initial'),
+        ('petspace', '0001_initial'),
     ]
 
     operations = [
