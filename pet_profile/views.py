@@ -13,15 +13,19 @@ class AddPetView(CreateView):
     template_name = 'add_pet_form.html'
     model = Pet
     form_class = PetForm
+    # success_url = reverse_lazy('pet_profile:pet_profile')
 
     # @login_required(login_url='petspace_info:login')
-    # def form_valid(self, form):
-    #     obj = form.save(commit=False)
-    #     user = User.objects.get(pk=1)
-    #     obj.user = self.request.user
-    #     obj.save()
-    #     return HttpResponseRedirect(self.get_success_url())
-    # success_url = reverse_lazy('pet_profile:pet_profile')
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        # user = User.objects.get(pk=1)
+        obj.user = self.request.user
+        obj.save()
+        self.object = obj
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('pet_profile:pet_profile', kwargs={'pk': self.object.pk})
 
     # def new_pet(request):
     #     if request.method == 'POST':

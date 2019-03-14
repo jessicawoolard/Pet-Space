@@ -7,8 +7,11 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 def signup(request):
@@ -19,7 +22,7 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            mail_subject = 'Activate your blog account.'
+            mail_subject = 'Activate your pet account.'
             message = render_to_string('registration/active_email.html', {
                 'user': user,
                 'domain': current_site.domain,

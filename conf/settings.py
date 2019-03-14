@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'users.apps.UsersConfig',
 
     'frontend', 'pet_profile',
     'accounts', 'user_profile',
@@ -74,7 +75,7 @@ AWS_S3_FILE_OVERWRITE = False
 
 REACT_APP_DIR = 'frontend/static'
 ROOT_URLCONF = 'conf.urls'
-# AUTH_USER_MODEL = 'account.MyUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
@@ -119,8 +120,9 @@ else:
             'PASSWORD': 'SafePass',
             'HOST': 'localhost',
             'PORT': '5432',
-        }
+        },
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
