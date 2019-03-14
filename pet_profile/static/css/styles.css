@@ -1,0 +1,11 @@
+body header {
+  border-bottom: black solid 2px;
+}
+body .footer_navigation {
+  display: inline-block;
+}
+body .footer_navigation p {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */

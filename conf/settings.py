@@ -3,6 +3,7 @@ import os
 import psycopg2
 import dj_database_url
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,9 +32,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend', 'pets',
-    'rest_framework', 'accounts',
+
+    'frontend', 'pet_profile',
+    'accounts', 'user_profile',
+    
     'crispy_forms', 'phone_field',
+    'rest_framework',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -58,13 +63,13 @@ MEDIA_URL = '/media/'
 
 # UPLOADED FILE CONFIGURATION
 #  SEE: https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-# AWS_STORAGE_BUCKET_NAME = 'carolinacodeschool'
-# AWS_DEFAULT_ACL = None
-# default will be to lock down
-# AWS_S3_FILE_OVERWRITE = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = 'pet-space'
+AWS_DEFAULT_ACL = None
+# # default will be to lock down
+AWS_S3_FILE_OVERWRITE = False
 # true is defult and will overwrite file names. Set to FALSE for files to upload and add numbers to the end of file to add repeats.
 
 REACT_APP_DIR = 'frontend/static'
@@ -81,7 +86,7 @@ EMAIL_PORT = 587
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'petspace_info/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -164,5 +169,5 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-LOGIN_REDIRECT_URL = 'pets:index'
-LOGOUT_REDIRECT_URL = 'pets:index'
+LOGIN_REDIRECT_URL = 'petspace_info:index'
+LOGOUT_REDIRECT_URL = 'petspace_info:index'

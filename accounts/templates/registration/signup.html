@@ -3,7 +3,7 @@
 
 {% block content %}
     <h2>Sign up</h2>
-    <form method="post">
+    <form method="post" id="form_signup_form">
         {% csrf_token %}
         {% for field in form %}
             <div>
@@ -22,11 +22,11 @@
     <div>
         Already have an account?
         <button>
-            <a href="{% url 'pets:login' %}">Login</a>
+            <a href="{% url 'petspace_info:login' %}">Login</a>
         </button>
     </div>
     <div>
-        <button><a href="{% url 'pets:index' %}">Go back Home</a> </button>
+        <button><a href="{% url 'petspace_info:index' %}">Go back Home</a> </button>
     </div>
     </form>
 {% endblock %}

@@ -2,14 +2,13 @@
 
 {% block content %}
 
-
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
-        <p><a href="{% url 'pets:logout' %}">Logout</a></p>
+        <p><a href="{% url 'petspace_info:logout' %}">Logout</a></p>
     {% else %}
         <div>
             <p>You are not logged in</p>
-            <button><a href="{% url 'pets:login' %}">Login</a></button>
+            <button><a href="{% url 'petspace_info:login' %}">Login</a></button>
         </div>
         <div>
         <button><a href="{% url 'accounts:signup' %}">Signup</a></button>

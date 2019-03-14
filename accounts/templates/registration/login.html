@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Login</h2>
-    <form method="post" action="{% url 'pets:login' %}">
+    <form method="post" action="{% url 'petspace_info:login' %}">
         {% csrf_token %}
         {{ form.as_p }}
           <button type="submit">Login</button>
@@ -13,7 +13,7 @@
         </button>
     </div>
     <div>
-        <button><a href="{% url 'pets:index' %}">Go back Home</a> </button>
+        <button><a href="{% url 'petspace_info:index' %}">Go back Home</a> </button>
     </div>
     </form>
 {% endblock %}
