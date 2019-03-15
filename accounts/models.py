@@ -14,5 +14,14 @@ class CustomUser(AbstractUser):
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
+
+    def create_superuser(self, username, password=None):
+        user = self.CustomUser(
+            username=username,
+            password=password,
+            is_staff=True,
+            is_admin=True
+        )
+        return user
 

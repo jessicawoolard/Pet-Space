@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from .serializer import UserSerializer
 from accounts.models import CustomUser
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ViewSet ):
     model = CustomUser
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
