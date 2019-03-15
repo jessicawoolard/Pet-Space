@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
 
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
@@ -17,5 +18,9 @@
         <button><a href="{% url 'accounts:signup' %}">Signup</a></button>
         </div>
     {% endif %}
+    <div>
+        <img src='../../petspace/static/images/catdog.jpeg' alt="#">
+    </div>
+
 
 {% endblock %}

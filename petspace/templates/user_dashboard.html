@@ -2,17 +2,28 @@
 
 {% block content %}
     <div>
-        <div>
+        <div class="row">
+            <div class="col-6">
             <p>Welcome {{ user.username }}</p>
+            </div>
+            <div class="col-6 edit_profile_button">
+                <a href="#">Edit my profile</a>
+            </div>
         </div>
+
+    <div>
+
+    </div>
         <div>
             <button><a href="{% url 'petspace:add_pet' %}">Add a new pet</a></button>
         </div>
         {% for pet in pets %}
             <div class="current_pet_link">
-
-                <button class="pet_profile_button"><a href="{% url 'petspace:pet_profile' pet.id %}">{{ pet.name }} profile</a>
-                </button>
+                <img class='pet_picture_dashboard' src="{{ pet.picture.url }}" alt="#">
+                <div>
+                    <a href="{% url 'petspace:pet_profile' pet.id %}">{{ pet.name }}</a>
+                    <button class="edit_button">Edit</button>
+                </div>
                 <p>
                     <button class="lost_button">Flag as lost</button>
                 </p>

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     'frontend', 'petspace',
     'accounts', 'qr_code',
+    'api',
     
     'crispy_forms', 'phone_field',
     'rest_framework',
