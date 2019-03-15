@@ -39,9 +39,9 @@ class PetProfileView(TemplateView):
         is_from_qr = self.kwargs.get("qr")
         pet = Pet.objects.get(pk=pet_pk)
         my_options = QRCodeOptions(size='M', border=6, error_correction='L')
-        url_string = self.request.build_absolute_uri() + "qr=true"
+        url_string = self.request.build_absolute_uri() + "?qr=true"
 
-        if is_from_qr:
+        if is_from_qr == "true":
             print("message user")
         context = {
             'pet': pet,
