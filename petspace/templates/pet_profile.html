@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load qr_code %}
     <div>
         <div class="row">
             <div class="col-4 pet_profile_picture">
@@ -25,8 +26,9 @@
             <a href="{% url 'petspace_info:index' %}">Return Home</a>
             <div>
             <button><a href="{% url 'petspace:dashboard' %}">Back to my dashboard</a></button>
-        {% endif %}    </div>
-
+        {% endif %}
+        </div>
+        {% qr_from_text url_string options=my_options %}
     </div>
 
 {% endblock %}

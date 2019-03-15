@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     # 'users.apps.UsersConfig',
 
     'frontend', 'petspace',
-    'accounts',
+    'accounts', 'qr_code',
     
     'crispy_forms', 'phone_field',
     'rest_framework',
@@ -53,6 +53,26 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    },
+    'qr-code': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'qr-code-cache',
+        'TIMEOUT': 3600
+    }
+}
+
+QR_CODE_CACHE_ALIAS = 'qr-code'
+
+QR_CODE_URL_PROTECTION = {
+    'TOKEN_LENGTH': 30,
+    'SIGNING_KEY': 'my-secret-signing-key',
+    'SIGNING_SALT': 'my-signing-salt',
+    'ALLOWS_EXTERNAL_REQUESTS_FOR_REGISTERED_USER': True
+}
 
 # MEDIA CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
