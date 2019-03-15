@@ -2,10 +2,11 @@
 
 {% block content %}
     <h2>Login</h2>
-    <form method="post" action="{% url 'petspace_info:login' %}">
+    <form method="post" action="{% url 'petspace_info:login' %}" >
         {% csrf_token %}
         {{ form.as_p }}
           <button type="submit">Login</button>
+        <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}" />
     <div>
         Don't have an account?
         <button>
@@ -13,7 +14,8 @@
         </button>
     </div>
     <div>
-        <button><a href="{% url 'petspace_info:index' %}">Go back Home</a> </button>
+        <button><a href="{% url 'petspace_info:index' %}">Go back Home</a></button>
+
     </div>
     </form>
 {% endblock %}
