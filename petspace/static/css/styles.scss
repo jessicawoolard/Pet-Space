@@ -11,12 +11,16 @@ body {
   .current_pet_link {
     display: inline-flex;
   }
-  img {
+  .pet_profile_picture {
     width: 200px;
   }
   .pet_picture_dashboard {
     width: 55px;
     height: 70px;
+  }
+  .home_picture {
+    width: 100%;
+    height: auto;
   }
 
 

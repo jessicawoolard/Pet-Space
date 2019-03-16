@@ -7,7 +7,7 @@ from . import views
 app_name = 'api'
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet, 'Users')
+router.register(r'users', views.UserViewSet, 'users')
 
 
 urlpatterns = router.urls

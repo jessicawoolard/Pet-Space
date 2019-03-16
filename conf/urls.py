@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('petspace.urls')),
     path('', include('petspace_info.urls')),
-    # path('', include('api.urls')),
+    path('', include('frontend.urls')),
     url('api/', include('api.urls')),
     url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
