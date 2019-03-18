@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
 
 
 User = get_user_model()

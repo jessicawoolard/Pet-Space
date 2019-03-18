@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     
     'crispy_forms', 'phone_field',
     'rest_framework',
-    'storages',
+    'storages', 'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +56,11 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/'
+)
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),

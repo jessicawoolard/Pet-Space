@@ -7,7 +7,7 @@
             <p>Welcome {{ user.username }}</p>
             </div>
             <div class="col-6 edit_profile_button">
-                <a href="#">Edit my profile</a>
+                <a href="{% url 'frontend:update_user' %}">Edit my profile</a>
             </div>
         </div>
 

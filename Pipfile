@@ -20,6 +20,7 @@ requests = "*"
 boto3 = "*"
 django-storages = "*"
 psycopg2 = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"
