@@ -34,13 +34,16 @@ class UpdateForm extends Component {
   render() {
     return (
         <div>
-        {/*<div>{users}</div>*/}
 
-        <form onSubmit={event => {event.preventDefault(); }} ref="form">
-
-
-
-
+        <form onSubmit={event => {event.preventDefault(); }} ref="form" autoComplete={'off'}>
+            <input type='text' name='first_name' placeholder={'First name'} />
+            <input type='text' name='last_name' placeholder={'Last name'}/>
+            <input type='text' name='phone_number' placeholder={'Phone number'}/>
+            <input type='text' name='street_address' placeholder={'Street address'}/>
+            <input type='text' name='street_address_2' placeholder={'Street address cont'}/>
+            <input type='text' name='city' placeholder={'City'}/>
+            <input type='text' name='state' placeholder={'State'}/>
+            <input type='text' name='zip_code' placeholder={'Zip code'}/>
             <input type='button' onClick={this.handleSubmit} value='Update'/>
         </form>
         </div>

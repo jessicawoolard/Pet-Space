@@ -40,12 +40,10 @@ INSTALLED_APPS = [
     
     'crispy_forms', 'phone_field',
     'rest_framework',
-    'storages', 'corsheaders',
+    'storages',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,11 +54,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 
 ]
-
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
-
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
@@ -203,6 +196,11 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend/static/build/static'),
+)
 
 LOGIN_REDIRECT_URL = 'petspace_info:index'
 LOGOUT_REDIRECT_URL = 'petspace_info:index'
