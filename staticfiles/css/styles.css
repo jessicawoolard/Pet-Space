@@ -1,0 +1,28 @@
+body header {
+  border-bottom: black solid 2px;
+}
+body .pet_name {
+  margin: 10px;
+}
+body .current_pet_link {
+  display: inline-flex;
+}
+body .pet_profile_picture {
+  width: 200px;
+}
+body .pet_picture_dashboard {
+  width: 55px;
+  height: 70px;
+}
+body .home_picture {
+  width: 100%;
+  height: auto;
+}
+body .footer_navigation {
+  display: inline-block;
+}
+body .footer_navigation p {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */

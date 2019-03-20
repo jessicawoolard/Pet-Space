@@ -1,0 +1,33 @@
+
+body {
+  header {
+    border-bottom: black solid 2px;
+  }
+  .header_navigation {
+  }
+  .pet_name {
+    margin: 10px;
+  }
+  .current_pet_link {
+    display: inline-flex;
+  }
+  .pet_profile_picture {
+    width: 200px;
+  }
+  .pet_picture_dashboard {
+    width: 55px;
+    height: 70px;
+  }
+  .home_picture {
+    width: 100%;
+    height: auto;
+  }
+
+
+  .footer_navigation {
+    display: inline-block;
+    p {
+      padding: 20px;
+    };
+  }
+}
