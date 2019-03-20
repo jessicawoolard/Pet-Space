@@ -9,5 +9,6 @@ urlpatterns = [
     path('add_pet/', views.AddPetView.as_view(), name='add_pet'),
     path('pet_profile/<int:pk>/', views.PetProfileView.as_view(), name='pet_profile'),
     path('user_dashboard/', views.UserDashboardView.as_view(), name='dashboard'),
+    path('edit_pet_profile/<int:pk>/', views.EditPetProfileView.as_view(), name='edit_pet'),
     url(r'^qr_code/', include(qr_code_urls, namespace="qr_code"))
 ]

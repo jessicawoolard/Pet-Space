@@ -22,7 +22,7 @@
                 <img class='pet_picture_dashboard' src="{{ pet.picture.url }}" alt="#">
                 <div>
                     <a href="{% url 'petspace:pet_profile' pet.id %}">{{ pet.name }}</a>
-                    <button class="edit_button">Edit</button>
+                    <button class="edit_button"><a href="{% url 'petspace:edit_pet' pet.id %}">Edit pet profile</a></button>
                 </div>
                 <p>
                     <button class="lost_button">Flag as lost</button>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'petspace:edit_pet' pet.id %}" method="post" novalidate id="form_signup_form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Edit Pet</button>
+    </form>
+
+
+{% endblock %}

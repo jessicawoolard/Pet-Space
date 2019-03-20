@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './../App.css';
 import UpdateForm from "./../Components/UpdateForm";
 import CurrentProfile from "../Components/CurrentProfile";
 
 
 class App extends Component {
-  constructor(props) {
-      super(props);
+    constructor(props) {
+        super(props);
 
-      this.state = {
-      // user: null
-    };
+        this.state = {
+            user: null
+        };
 
-    this.updateUser = this.updateUser.bind(this);
-  }
+        this.updateUser = this.updateUser.bind(this);
+    }
 
-  updateUser(user) {
-      console.log(JSON.stringify(this.state.user));
+    updateUser(user) {
+        console.log(JSON.stringify(this.state.user));
         fetch(`/api/update_profile/`, {
             method: 'PUT',
             body: JSON.stringify(user),
@@ -33,8 +33,9 @@ class App extends Component {
             })
 
             .catch(error => console.log('Error', error))
-  }
-  componentDidMount() {
+    }
+
+    componentDidMount() {
         fetch('/api/update_profile/', {
             method: "GET",
             credentials: 'include',
@@ -50,18 +51,20 @@ class App extends Component {
                 this.setState({user: json})
             })
             .catch(error => console.log(error))
-  }
+    }
 
-  render() {
-      let user = this.state.user;
-    return (
-      <div className="App">
-
-        <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
-        <CurrentProfile updateUser={user}/>
-      </div>
-    );
-  }
+    render() {
+        let user = this.state.user;
+        return (
+            <div className="App">
+                <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
+                <CurrentProfile updateUser={user}/>
+                <button>
+                    <a href="../user_dashboard/"> Go back to dashboard </a>
+                </button>
+            </div>
+        );
+    }
 }
 
 export default App;

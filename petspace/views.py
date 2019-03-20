@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView
 from django.urls import reverse_lazy
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -61,4 +61,9 @@ class UserDashboardView(LoginRequiredMixin, ListView):
         return Pet.objects.filter(user=self.request.user)
 
 
+class EditPetProfileView(UpdateView):
+    template_name = 'edit_pet_form.html'
+    model = Pet
+    form_class = PetForm
+    success_url = reverse_lazy('petspace:dashboard')
 
