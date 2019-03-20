@@ -4,5 +4,5 @@ from .views import UserUpdateDataView
 app_name = 'frontend'
 
 urlpatterns = [
-    path('update/', UserUpdateDataView.as_view(), name='update_user')
+    path('update_profile/', UserUpdateDataView.as_view(), name='update_user')
 ]

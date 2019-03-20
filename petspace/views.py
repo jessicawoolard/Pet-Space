@@ -6,9 +6,6 @@ from django.shortcuts import render
 from .models import Pet
 from .forms import PetForm
 from qr_code.qrcode.utils import QRCodeOptions
-from django.contrib.sites.shortcuts import get_current_site
-
-from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 

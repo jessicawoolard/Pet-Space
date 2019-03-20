@@ -6,4 +6,5 @@ from accounts.models import CustomUser
 class UserSerializer(ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'street_address', 'street_address_2', 'city', 'state', 'zip_code')
+        fields = ('first_name', 'last_name', 'phone_number', 'street_address', 'street_address_2', 'city', 'state', 'zip_code')
+        read_only_fields = ('username', 'email')

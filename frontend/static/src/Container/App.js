@@ -1,66 +1,41 @@
 import React, { Component } from 'react';
 import './../App.css';
 import UpdateForm from "./../Components/UpdateForm";
-import CurrentUserInfo from "../Components/CurrentUserInfo";
+import CurrentProfile from "../Components/CurrentProfile";
+
 
 class App extends Component {
   constructor(props) {
       super(props);
 
       this.state = {
-      users: [],
-      first_name: '',
-      last_name: '',
-      phone_number: '',
-      street_address: '',
-      street_address_2: '',
-      city: '',
-      state: '',
-      zip_code: '',
+      // user: null
     };
 
-    // this.updateUser = this.updateUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
-  // updateUser(user) {
-  //       console.log(user);
-  //       // let text = user.text;
-  //       let first_name = user.first_name;
-  //       let last_name = user.last_name;
-  //       let phone_number = user.phone_number;
-  //       let street_address = user.street_address;
-  //       let street_address_2 = user.street_address_2;
-  //       let city = user.city;
-  //       let state = user.state;
-  //       let zip_code = user.zip_code;
-  //
-  //       let formData = new FormData();
-  //       formData.append('first_name', first_name);
-  //       formData.append('last_name', last_name);
-  //       formData.append('phone_number', phone_number);
-  //       formData.append('street_address', street_address);
-  //       formData.append('street_address_2', street_address_2);
-  //       formData.append('city', city);
-  //       formData.append('state', state);
-  //       formData.append('zip_code', zip_code);
-  //
-  //       fetch(`${process.env.REACT_APP_API_HOST}/api/user/`, {
-  //           method: 'POST',
-  //           body: formData
-  //       }).then(response => response.json())
-  //           .then(json => {
-  //               let updatedUsers = [...this.state.users];
-  //               updatedUsers.push(json);
-  //               this.setState({users: updatedUsers});
-  //               console.log('Success', JSON.stringify(json))
-  //
-  //           })
-  //
-  //           .catch(error => console.log('Error', error))
-  //   }
+  updateUser(user) {
+      console.log(JSON.stringify(this.state.user));
+        fetch(`/api/update_profile/`, {
+            method: 'PUT',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        }).then(response => response.json())
+            .then(json => {
+                // let updatedUser = json;
+                this.setState({user: json});
+                console.log('Success', json)
 
-    componentDidMount() {
-        fetch('/api/users/', {
+            })
+
+            .catch(error => console.log('Error', error))
+  }
+  componentDidMount() {
+        fetch('/api/update_profile/', {
             method: "GET",
             credentials: 'include',
         }).then(response => {
@@ -72,19 +47,18 @@ class App extends Component {
         })
             .then(json => {
                 console.log('items', json);
-                this.setState({users: json})
+                this.setState({user: json})
             })
             .catch(error => console.log(error))
-    }
+  }
 
   render() {
+      let user = this.state.user;
     return (
       <div className="App">
-          <h1>
-              hi
-          </h1>
-          {/*<CurrentUserInfo users={this.props.users}/>*/}
-        <UpdateForm updateUser={this.updateUser}/>
+
+        <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
+        <CurrentProfile updateUser={user}/>
       </div>
     );
   }
