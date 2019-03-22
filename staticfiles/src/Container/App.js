@@ -47,7 +47,7 @@ class App extends Component {
             }
         })
             .then(json => {
-                console.log('items', json);
+                // console.log('items', json);
                 this.setState({user: json})
             })
             .catch(error => console.log(error))

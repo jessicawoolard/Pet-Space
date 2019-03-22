@@ -23,7 +23,7 @@ class CurrentProfile extends Component {
         let zip_code = this.props.updateUser != null ? this.props.updateUser.zip_code : "";
 
         return (
-
+            <table>
                 <tbody>
                     <tr>
                         <td>First Name</td>
@@ -58,6 +58,8 @@ class CurrentProfile extends Component {
                         <td>{zip_code}</td>
                     </tr>
                 </tbody>
+            </table>
+
         );
     }
 }
