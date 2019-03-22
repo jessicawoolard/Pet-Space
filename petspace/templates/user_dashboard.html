@@ -24,9 +24,14 @@
                     <a href="{% url 'petspace:pet_profile' pet.id %}">{{ pet.name }}</a>
                     <button class="edit_button"><a href="{% url 'petspace:edit_pet' pet.id %}">Edit pet profile</a></button>
                 </div>
-                <p>
-                    <button class="lost_button">Flag as lost</button>
-                </p>
+                <form method="post" action="{% url 'petspace:lost_pet' pet.id %}">
+                    {% csrf_token %}
+                    {% if pet.lost %}
+                        <input class='pet_lost' type="submit"  value="Flag as found" />
+                    {% else %}
+                         <input type="submit" value="Flag as lost" />
+                    {% endif %}
+                </form>
             </div>
         {% endfor %}
 

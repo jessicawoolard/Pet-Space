@@ -1,12 +1,20 @@
-from django.views.generic import CreateView, TemplateView, ListView, UpdateView
+import os
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView, View
 from django.urls import reverse_lazy
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Pet
+from accounts.models import CustomUser
 from .forms import PetForm
 from qr_code.qrcode.utils import QRCodeOptions
 from django.contrib.auth.mixins import LoginRequiredMixin
+from twilio.rest import Client
+
+
+ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER')
 
 
 class AddPetView(LoginRequiredMixin, CreateView):
@@ -33,17 +41,25 @@ class PetProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         pet_pk = self.kwargs.get('pk')
-        is_from_qr = self.kwargs.get("qr")
+        is_from_qr = self.request.GET.get("qr")
         pet = Pet.objects.get(pk=pet_pk)
         my_options = QRCodeOptions(size='M', border=6, error_correction='L')
         url_string = self.request.build_absolute_uri() + "?qr=true"
 
+        user = CustomUser.objects.get(pk=pet.user_id)
+        print(user.phone_number)
+        # have the phone number not "re-format" the value, need it in +12345678901 format
+
         if is_from_qr == "true":
-            print("message user")
+            client = Client(ACCOUNT_SID, AUTH_TOKEN)
+
+            print('Sending a message...')
+            client.messages.create(to="+12527025370", from_="+12526806658", body='Twilio works!')
         context = {
             'pet': pet,
             'my_options': my_options,
-            'url_string': url_string
+            'url_string': url_string,
+            "email_address": user.email
 
         }
         return context
@@ -67,3 +83,12 @@ class EditPetProfileView(UpdateView):
     form_class = PetForm
     success_url = reverse_lazy('petspace:dashboard')
 
+
+class PetLostView(View):
+    def post(self, request, **kwargs):
+        pet_pk = self.kwargs.get('pk')
+        pet = Pet.objects.get(pk=pet_pk)
+        pet.lost = not pet.lost
+        pet.save()
+        profile_url = reverse('petspace:pet_profile', args=(pet.pk,))
+        return HttpResponseRedirect(profile_url)

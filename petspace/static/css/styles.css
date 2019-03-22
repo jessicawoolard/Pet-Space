@@ -18,6 +18,9 @@ body .home_picture {
   width: 100%;
   height: auto;
 }
+body .pet_lost {
+  background-color: red;
+}
 body .footer_navigation {
   display: inline-block;
 }

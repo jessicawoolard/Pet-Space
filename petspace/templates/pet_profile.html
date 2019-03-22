@@ -1,17 +1,22 @@
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
 
 {% block content %}
     {% load qr_code %}
     <div>
+        {%  if pet.lost %}
+            <div style="background-color: red;">
+            He lost ya'll
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-4 pet_profile_picture">
-                <img src="{{ pet.picture.url }}" alt="#">
+                <img class='pet_profile_picture' src="{{ pet.picture.url }}" alt="#">
             </div>
             <div class="col-3 pet_name">
                 {{ pet.name }}
             </div>
             <div class="col-4 alert_button">
-                <button>Email my Owner</button>
+                <a href="mailto:{{ email_address }}">Email my Owner</a>
             </div>
         </div>
         <div class="row">

@@ -20,6 +20,8 @@ requests = "*"
 boto3 = "*"
 django-storages = "*"
 psycopg2 = "*"
+twilio = "*"
+django-twilio = "*"
 
 [requires]
 python_version = "3.7"
