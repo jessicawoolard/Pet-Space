@@ -48,13 +48,14 @@ class PetProfileView(TemplateView):
 
         user = CustomUser.objects.get(pk=pet.user_id)
         print(user.phone_number)
+        phone_number = user.phone_number.raw_phone
         # have the phone number not "re-format" the value, need it in +12345678901 format
 
         if is_from_qr == "true":
             client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
             print('Sending a message...')
-            client.messages.create(to="+12527025370", from_="+12526806658", body='Twilio works!')
+            client.messages.create(to=phone_number, from_="+12526806658", body='Twilio works!')
         context = {
             'pet': pet,
             'my_options': my_options,

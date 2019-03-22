@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('petspace.urls')),
     path('', include('petspace_info.urls')),
     path('', include('frontend.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     url('api/', include('api.urls')),
     url('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
