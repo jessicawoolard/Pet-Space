@@ -1,36 +1,98 @@
 
+$pet-space-blue: #41b3d3;
+$pet-space-gray: #e4e4e4;
 body {
   header {
-    border-bottom: black solid 2px;
+    //border-bottom: black solid 2px;
+    header {
+
+    }
+    .brand_container {
+      position: relative;
+      height: 150px;
+      .user_greeting {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    }
+    .brand {
+      position: absolute;
+      left: 50%;
+      margin-left: -75px !important; /* 50% of your logo width */
+      display: block;
+    }
+    .navbar {
+      background-color: $pet-space-gray;
+      margin-bottom: 20px;
+      .right-nav {
+        .nav-item {
+          margin-right: 10px;
+        }
+      }
+    }
   }
+
+  .pet_space_button {
+    background-color: $pet-space-blue;
+    border-radius: 4px;
+    border: none;
+    a {
+      color: #ffffff;
+    }
+  }
+
   .header_navigation {
   }
+
   .pet_name {
     margin: 10px;
   }
+
   .current_pet_link {
     display: inline-flex;
   }
+
   .pet_profile_picture {
     width: 200px;
   }
+
   .pet_picture_dashboard {
-    width: 55px;
+    width: 50px;
     height: 70px;
   }
+
   .home_picture {
+    margin-top: 20px;
     width: 100%;
     height: auto;
   }
+
   .pet_lost {
     background-color: red;
   }
 
+  footer {
+    text-align: center;
+    a {
+      color: $pet-space-blue;
+    }
+  }
 
   .footer_navigation {
     display: inline-block;
+
     p {
       padding: 20px;
-    };
+    }
+
+  }
+
+  .margin-bottom {
+    margin-bottom: 20px;
+  }
+
+  .margin-bottom-half {
+    margin-bottom: 10px;
   }
 }

@@ -22,6 +22,7 @@ django-storages = "*"
 psycopg2 = "*"
 twilio = "*"
 django-twilio = "*"
+googlemaps = "*"
 
 [requires]
 python_version = "3.7"

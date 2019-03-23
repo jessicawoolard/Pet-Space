@@ -10,11 +10,14 @@ from .forms import PetForm
 from qr_code.qrcode.utils import QRCodeOptions
 from django.contrib.auth.mixins import LoginRequiredMixin
 from twilio.rest import Client
+import googlemaps
+from datetime import datetime
 
 
 ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
 AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
 TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER')
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 
 class AddPetView(LoginRequiredMixin, CreateView):
@@ -32,7 +35,6 @@ class AddPetView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('petspace:dashboard')
-                       # , kwargs={'pk': self.object.pk})
 
 
 class PetProfileView(TemplateView):
@@ -56,6 +58,11 @@ class PetProfileView(TemplateView):
 
             print('Sending a message...')
             client.messages.create(to=phone_number, from_="+12526806658", body='Twilio works!')
+
+        # gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
+        # geocode_result = gmaps.geocode(user.street_address)
+        # reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
+
         context = {
             'pet': pet,
             'my_options': my_options,
@@ -91,5 +98,5 @@ class PetLostView(View):
         pet = Pet.objects.get(pk=pet_pk)
         pet.lost = not pet.lost
         pet.save()
-        profile_url = reverse('petspace:pet_profile', args=(pet.pk,))
+        profile_url = reverse('petspace:dashboard')
         return HttpResponseRedirect(profile_url)

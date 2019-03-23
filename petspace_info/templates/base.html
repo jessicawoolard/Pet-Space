@@ -18,11 +18,15 @@
     <body>
         <div class="container">
             <header>
-                <div class="header_navigation">
-                    <p>Menu</p>
-                    <p><a href="{% url 'petspace_info:index' %}"> Return Home Page</a> </p>
+                <div class="brand_container">
+                    {% if user.is_authenticated %}
+                        <span class="user_greeting text-capitalize">Hi {{ user.first_name }}!</span>
+                    {% endif %}
+                    <div class="brand">
+                        <img alt="Pet Space Logo" src="{% static 'images/logo.png' %}" width="150px" height="150px"/>
+                    </div>
                 </div>
-
+                {% include 'navigation_bar.html' %}
             </header>
             {% block content %}
 

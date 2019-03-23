@@ -50,20 +50,19 @@ class UpdateForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} ref="form">
-                <div><input type="text" name="first_name" onChange={this.handleChange} value={this.state.first_name}
-                            placeholder={'First name'}/></div>
+            <form onSubmit={this.handleSubmit} ref="form" >
+                <div><input type="text" name="first_name"  onChange={this.handleChange} value={this.state.first_name}
+                            placeholder={'First name'} autoCapitalize/></div>
                 <div><input type="text" onChange={this.handleChange} name="last_name" value={this.state.last_name}
-                            placeholder={'Last name'}/></div>
+                            placeholder={'Last name'} autoCapitalize/></div>
                 <div><input type="text" onChange={this.handleChange} name="phone_number" value={this.state.phone_number}
                             placeholder={'Phone number'}/></div>
                 <div><input type="text" onChange={this.handleChange} name="street_address"
-                            value={this.state.street_address} placeholder={'Street address'}/></div>
+                            value={this.state.street_address} placeholder={'Street address'} autoCapitalize/></div>
                 <div><input type="text" onChange={this.handleChange} name="street_address_2"
-                            value={this.state.street_address_2} placeholder={'Street address cont'}/></div>
+                            value={this.state.street_address_2} placeholder={'Street address cont'} autoCapitalize/></div>
                 <div><input type="text" onChange={this.handleChange} name="city" value={this.state.city}
-                            placeholder={'City'}/></div>
-
+                            placeholder={'City'} autoCapitalize/></div>
                 <div>
                     <label htmlFor="state_select"> State</label>
                     <select name="state" id="state_select" value={this.state.state} onChange={this.handleChange}>

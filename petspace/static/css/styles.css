@@ -1,5 +1,33 @@
-body header {
-  border-bottom: black solid 2px;
+body header .brand_container {
+  position: relative;
+  height: 150px;
+}
+body header .brand_container .user_greeting {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+body header .brand {
+  position: absolute;
+  left: 50%;
+  margin-left: -75px !important;
+  /* 50% of your logo width */
+  display: block;
+}
+body header .navbar {
+  background-color: #e4e4e4;
+  margin-bottom: 20px;
+}
+body header .navbar .right-nav .nav-item {
+  margin-right: 10px;
+}
+body .pet_space_button {
+  background-color: #41b3d3;
+  border-radius: 4px;
+  border: none;
+}
+body .pet_space_button a {
+  color: #ffffff;
 }
 body .pet_name {
   margin: 10px;
@@ -11,21 +39,34 @@ body .pet_profile_picture {
   width: 200px;
 }
 body .pet_picture_dashboard {
-  width: 55px;
+  width: 50px;
   height: 70px;
 }
 body .home_picture {
+  margin-top: 20px;
   width: 100%;
   height: auto;
 }
 body .pet_lost {
   background-color: red;
 }
+body footer {
+  text-align: center;
+}
+body footer a {
+  color: #41b3d3;
+}
 body .footer_navigation {
   display: inline-block;
 }
 body .footer_navigation p {
   padding: 20px;
+}
+body .margin-bottom {
+  margin-bottom: 20px;
+}
+body .margin-bottom-half {
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */
