@@ -12,7 +12,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
 
-
         <title>Pet Space</title>
     </head>
     <body>
@@ -23,7 +22,7 @@
                         <span class="user_greeting text-capitalize">Hi {{ user.first_name }}!</span>
                     {% endif %}
                     <div class="brand">
-                        <img alt="Pet Space Logo" src="{% static 'images/logo.png' %}" width="150px" height="150px"/>
+                        <a href="{% url 'petspace_info:index' %}"><img alt="Pet Space Logo" src="{% static 'images/logo.png' %}" width="150px" height="150px"/></a>
                     </div>
                 </div>
                 {% include 'navigation_bar.html' %}
@@ -33,23 +32,25 @@
             {% endblock %}
             <footer>
                 <div class="footer_navigation">
-                    <p><a href="#">About Us</a></p>
+                    <p><a href="{% url 'petspace:about_us' %}">About Us</a></p>
                 </div>
                 <div class="footer_navigation">
-                    <p><a href="#">Our Story</a></p>
+                    <p><a href="{% url 'petspace:our_story' %}">Our Story</a></p>
                 </div>
                 <div class="footer_navigation">
                     <p><i class="large material-icons">pets</i></p>
                 </div>
                 <div class="footer_navigation">
-                    <p><a href="#">Contact</a></p>
+                    <p><a href="{% url 'petspace:contact' %}">Contact</a></p>
                 </div>
                 <div class="footer_navigation">
-                    <p><a href="#">Photo Gallery</a></p>
+                    <p><a href="{% url 'petspace:photo_gallery' %}">Photo Gallery</a></p>
                 </div>
             </footer>
         </div>
 
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf4iMCdsQwy3qhO-7SqUw4IcwHu5GqjlE&callback=initMap"
+                async defer></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
                 crossorigin="anonymous"></script>
@@ -67,6 +68,27 @@
 
                 });
             }(jQuery));
+        </script>
+        <script>
+            var map;
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: {{ latitude }}, lng: {{ longitude }}},
+                    zoom: 8
+                });
+
+                var cityCircle = new google.maps.Circle({
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35,
+                    map: map,
+                    center: {lat: {{ latitude }}, lng: {{ longitude }}},
+                    radius: 10000
+                });
+            }
         </script>
 
     </body>

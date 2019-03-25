@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import get_user_model
+import googlemaps
 from django.urls import reverse_lazy
 
 
@@ -21,6 +22,13 @@ def signup(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+
+            # Geocode Address
+            client = googlemaps.Client(key='AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ')
+            geocode_result = client.geocode(user.full_address())
+            user.latitude = geocode_result[0]['geometry']['location']['lat']
+            user.longitude = geocode_result[0]['geometry']['location']['lng']
+
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your pet account.'

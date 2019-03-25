@@ -11,8 +11,6 @@ from qr_code.qrcode.utils import QRCodeOptions
 from django.contrib.auth.mixins import LoginRequiredMixin
 from twilio.rest import Client
 import googlemaps
-from datetime import datetime
-
 
 ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
 AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
@@ -39,6 +37,7 @@ class AddPetView(LoginRequiredMixin, CreateView):
 
 class PetProfileView(TemplateView):
     template_name = 'pet_profile.html'
+
     # success_url = reverse('p')
 
     def get_context_data(self, **kwargs):
@@ -67,8 +66,9 @@ class PetProfileView(TemplateView):
             'pet': pet,
             'my_options': my_options,
             'url_string': url_string,
-            "email_address": user.email
-
+            "email_address": user.email,
+            "latitude": user.latitude,
+            "longitude": user.longitude
         }
         return context
 
@@ -100,3 +100,19 @@ class PetLostView(View):
         pet.save()
         profile_url = reverse('petspace:dashboard')
         return HttpResponseRedirect(profile_url)
+
+
+class AboutUsView(TemplateView):
+    template_name = 'about_us.html'
+
+
+class ContactView(TemplateView):
+    template_name = 'contact.html'
+
+
+class OurStoryView(TemplateView):
+    template_name = 'our_story.html'
+
+
+class PhotoGalleryView(TemplateView):
+    template_name = 'photo_gallery.html'

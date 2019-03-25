@@ -11,10 +11,20 @@ class CustomUser(AbstractUser):
     city = models.CharField(max_length=255)
     state = USStateField()
     zip_code = models.IntegerField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
+
+    def full_address(self):
+        address = self.street_address
+        address += " " + self.street_address_2
+        address += " " + self.city
+        address += " " + self.state
+        address += " " + str(self.zip_code)
+        return address
 
     def create_superuser(self, username, password=None):
         user = self.CustomUser(

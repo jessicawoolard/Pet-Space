@@ -24,22 +24,32 @@ body {
     }
     .navbar {
       background-color: $pet-space-gray;
-      margin-bottom: 20px;
       .right-nav {
         .nav-item {
           margin-right: 10px;
         }
       }
     }
+
+    .breadcrumbs {
+      background-color: #ffffff;
+    }
   }
 
   .pet_space_button {
+    padding: 4px 20px;
     background-color: $pet-space-blue;
     border-radius: 4px;
     border: none;
-    a {
+    text-align: center;
+    color: #ffffff;
+    :visited {
       color: #ffffff;
     }
+  }
+
+  .full-width {
+    width: 100%;
   }
 
   .header_navigation {
@@ -54,7 +64,7 @@ body {
   }
 
   .pet_profile_picture {
-    width: 200px;
+    //width: 200px;
   }
 
   .pet_picture_dashboard {
@@ -63,9 +73,13 @@ body {
   }
 
   .home_picture {
-    margin-top: 20px;
     width: 100%;
     height: auto;
+    margin-top: 20px;
+  }
+
+  .right-border {
+    border-right: $pet-space-gray;
   }
 
   .pet_lost {

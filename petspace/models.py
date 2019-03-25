@@ -10,4 +10,3 @@ class Pet(models.Model):
     description = models.CharField(max_length=250)
     hobbies = models.CharField(max_length=255, default='')
     lost = models.BooleanField(default=False)
-

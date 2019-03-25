@@ -1,39 +1,51 @@
-    {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
     {% load qr_code %}
-    <div>
-        {%  if pet.lost %}
-            <div style="background-color: red;">
-            He lost ya'll
+
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #ffffff;">
+            <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'petspace:dashboard' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ pet.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        {% if pet.lost %}
+            <div class="col-12">
+                <div class="alert alert-danger margin" role="alert">
+                    {{ pet.name }} is lost!
+                </div>
             </div>
         {% endif %}
-        <div class="row">
-            <div class="col-4 pet_profile_picture">
-                <img class='pet_profile_picture' src="{{ pet.picture.url }}" alt="#">
+    </div>
+
+    <div class="row">
+
+        <div class="col-3">
+            <img class='pet_profile_picture img-thumbnail img-fluid full-width' src="{{ pet.picture.url }}" alt="#">
+            <div class="row">
+                <p>{{ pet.name }}</p>
             </div>
-            <div class="col-3 pet_name">
-                {{ pet.name }}
-            </div>
-            <div class="col-4 alert_button">
-                <a href="mailto:{{ email_address }}">Email my Owner</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {{ pet.type_of_animal }}
-            </div>
-            <div class="col-6">
-                {{ pet.description }}
+            <a class="pet_space_button full-width" href="mailto:{{ email_address }}">Email my Owner</a>
+            <div class="row">
+                {% qr_from_text url_string options=my_options %}
             </div>
         </div>
-        {% if user.is_authenticated %}
-            <a href="{% url 'petspace_info:index' %}">Return Home</a>
-            <div>
-            <button><a href="{% url 'petspace:dashboard' %}">Back to my dashboard</a></button>
-        {% endif %}
+
+        <div class="col-9">
+            <div class="img-thumbnail">
+                <div id="map" style="height: 200px; width: 100%;"></div>
+            </div>
+            <div class="row">
+                Type of Animal: {{ pet.type_of_animal }}
+            </div>
+            <div class="row">
+                Description: {{ pet.description }}
+            </div>
         </div>
-        {% qr_from_text url_string options=my_options %}
+
     </div>
 
 {% endblock %}

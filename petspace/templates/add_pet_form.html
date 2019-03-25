@@ -1,13 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="{% url 'petspace:add_pet' %}" method="post" novalidate id="form_signup_form" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <button type="submit">Add Pet</button>
-    </form>
 
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #ffffff;">
+            <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'petspace:dashboard' %}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Pet Profile</li>
+        </ol>
+    </nav>
+
+    <div class="col-12">
+        <div class="row">
+            <form action="{% url 'petspace:add_pet' %}" method="post" novalidate id="form_signup_form"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <table class="table table-hover table-bordered">
+                    {{ form.as_table }}
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input class="pet_space_button" type="submit" value="Add Pet"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}

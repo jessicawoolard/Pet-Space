@@ -12,5 +12,9 @@ urlpatterns = [
     path('edit_pet_profile/<int:pk>/', views.EditPetProfileView.as_view(), name='edit_pet'),
     url('qr_code/', include(qr_code_urls, namespace="qr_code")),
     path('pet_profile/<int:pk>/lost/', views.PetLostView.as_view(), name='lost_pet'),
+    path('about_us/', views.AboutUsView.as_view(), name='about_us'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
+    path('our_story/', views.OurStoryView.as_view(), name='our_story'),
+    path('photo_gallery/', views.PhotoGalleryView.as_view(), name='photo_gallery'),
     # url('sms/', 'petspace.views.sms_personal')
 ]
