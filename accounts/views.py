@@ -10,6 +10,8 @@ from .tokens import account_activation_token
 from django.core.mail import EmailMessage
 from django.contrib.auth import get_user_model
 import googlemaps
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 
@@ -43,7 +45,10 @@ def signup(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            # Redirect to the a new page/template that shows a boostrap alert and then when they click okay, redirect to home screen.
+            # Or set a timeout to redirect to home screen set_timeout() -> window.location = "127.0.0.1.... etc"
+            index = reverse('petspace_info:index', args='')
+            return HttpResponseRedirect(index)
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})

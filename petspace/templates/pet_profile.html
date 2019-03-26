@@ -6,7 +6,9 @@
     <nav class="breadcrumbs" aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color: #ffffff;">
             <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
+            {% if user.is_authenticated %}
             <li class="breadcrumb-item"><a href="{% url 'petspace:dashboard' %}">Dashboard</a></li>
+            {% endif %}
             <li class="breadcrumb-item active" aria-current="page">{{ pet.name }}</li>
         </ol>
     </nav>
@@ -35,9 +37,8 @@
         </div>
 
         <div class="col-9">
-            <div class="img-thumbnail">
-                <div id="map" style="height: 200px; width: 100%;"></div>
-            </div>
+            <div class='map' id='map' data-user-id="{{ pet.user_id }}"></div>
+
             <div class="row">
                 Type of Animal: {{ pet.type_of_animal }}
             </div>

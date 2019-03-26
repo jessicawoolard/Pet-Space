@@ -26,8 +26,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -37,6 +35,8 @@ INSTALLED_APPS = [
     'frontend', 'petspace',
     'accounts', 'qr_code',
     'api',
+    'django.contrib.admin',
+    'django.contrib.auth',
     
     'crispy_forms', 'phone_field',
     'rest_framework',
@@ -108,12 +108,16 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'petspacegville@gmail.com'
 EMAIL_HOST_PASSWORD = 'SafePass'
 EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'petspace_info/templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'petspace_info/templates'),
+            os.path.join(BASE_DIR, 'frontend/static/'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

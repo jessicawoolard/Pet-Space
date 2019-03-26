@@ -18,7 +18,7 @@ class CurrentProfile extends Component {
         };
     }
 
-        componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps) {
         if (this.props.updateUser !== prevProps.updateUser) {
             let user = this.props.updateUser;
             this.setState({
@@ -53,38 +53,38 @@ class CurrentProfile extends Component {
         return (
             <table>
                 <tbody>
-                    <tr>
-                        <td>First Name</td>
-                        <td>{this.state.first_name}</td>
-                    </tr>
-                                        <tr>
-                        <td>Last Name</td>
-                        <td>{this.state.last_name}</td>
-                    </tr>
-                                        <tr>
-                        <td>Phone Number</td>
-                        <td>{this.state.phone_number}</td>
-                    </tr>
-                                        <tr>
-                        <td>Street Address</td>
-                        <td>{this.state.street_address}</td>
-                    </tr>
-                                        <tr>
-                        <td>Street Address 2</td>
-                        <td>{this.state.street_address_2}</td>
-                    </tr>
-                                        <tr>
-                        <td>City</td>
-                        <td>{this.state.city}</td>
-                    </tr>
-                                        <tr>
-                        <td>State</td>
-                        <td>{this.state.state}</td>
-                    </tr>
-                                        <tr>
-                        <td>Zip Code</td>
-                        <td>{this.state.zip_code}</td>
-                    </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>{this.state.first_name}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{this.state.last_name}</td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td>{this.state.phone_number}</td>
+                </tr>
+                <tr>
+                    <td>Street Address</td>
+                    <td>{this.state.street_address}</td>
+                </tr>
+                <tr>
+                    <td>Street Address 2</td>
+                    <td>{this.state.street_address_2}</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>{this.state.city}</td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>{this.state.state}</td>
+                </tr>
+                <tr>
+                    <td>Zip Code</td>
+                    <td>{this.state.zip_code}</td>
+                </tr>
                 </tbody>
             </table>
 

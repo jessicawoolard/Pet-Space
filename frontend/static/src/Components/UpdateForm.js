@@ -14,7 +14,9 @@ class UpdateForm extends Component {
             street_address2: '',
             city: '',
             state: '',
-            zip_code: ''
+            zip_code: '',
+            latitude: '',
+            longitude: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +34,9 @@ class UpdateForm extends Component {
                 street_address2: user.street_address2,
                 city: user.city,
                 state: user.state,
-                zip_code: user.zip_code
+                zip_code: user.zip_code,
+                latitude: user.latitude,
+                longitude: user.longitude
             })
         }
     }
@@ -119,8 +123,8 @@ class UpdateForm extends Component {
                         <option value="WY">Wyoming</option>
                     </select>
                 </div>
-                <div><input type="text" onChange={this.handleChange} name="zip_code" value={this.state.zip_code}
-                            placeholder={'Zip code'}/></div>
+                <div><input type="text" onChange={this.handleChange} name="zip_code" value={this.state.zip_code} placeholder={'Zip code'}/></div>
+                <div><input type="hidden" onChange={this.handleChange} name="latitude" value={this.state.latitude} /></div>
                 <input type="submit" value="Update"/>
             </form>
         );

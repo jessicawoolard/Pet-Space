@@ -7,6 +7,9 @@
         {{ form.as_p }}
           <button type="submit">Login</button>
         <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}" />
+        <div>
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        </div>
     <div>
         Don't have an account?
         <button>

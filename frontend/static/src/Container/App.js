@@ -60,7 +60,7 @@ class App extends Component {
                 <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
                 <CurrentProfile updateUser={user}/>
                 <button>
-                    <a href="../user_dashboard/"> Go back to dashboard </a>
+                    <a href="../../user_dashboard/"> Go back to dashboard </a>
                 </button>
             </div>
         );
