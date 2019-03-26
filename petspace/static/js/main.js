@@ -27,6 +27,7 @@
             let user_id = $("#map").data("user-id");
             $.ajax('/api/users/' + user_id, {
                 'method': 'GET',
+
                 'success': function (data) {
                     let latitude = data["latitude"];
                     let longitude = data["longitude"];

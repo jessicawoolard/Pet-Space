@@ -108,7 +108,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'petspacegville@gmail.com'
 EMAIL_HOST_PASSWORD = 'SafePass'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+DEFAULT_FROM_EMAIL = 'PetSpace Team <noreply@example.com>'
 
 
 TEMPLATES = [

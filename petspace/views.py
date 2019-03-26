@@ -56,7 +56,7 @@ class PetProfileView(TemplateView):
             client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
             print('Sending a message...')
-            client.messages.create(to=phone_number, from_="+12526806658", body='Twilio works!')
+            client.messages.create(to=phone_number, from_="+12028519104", body="Your pet's QR code has been scanned" + pet.name)
 
         # gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
         # geocode_result = gmaps.geocode(user.street_address)

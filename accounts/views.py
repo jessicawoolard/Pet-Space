@@ -1,3 +1,4 @@
+import os
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
@@ -14,6 +15,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 User = get_user_model()
 
@@ -26,7 +28,7 @@ def signup(request):
             user.is_active = False
 
             # Geocode Address
-            client = googlemaps.Client(key='AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ')
+            client = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
             geocode_result = client.geocode(user.full_address())
             user.latitude = geocode_result[0]['geometry']['location']['lat']
             user.longitude = geocode_result[0]['geometry']['location']['lng']
