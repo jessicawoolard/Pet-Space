@@ -8,7 +8,7 @@ class SignupForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'street_address', 'street_address_2', 'city', 'state', 'zip_code', 'is_staff')
+        fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'street_address', 'street_address_2', 'city', 'state', 'zip_code')
 
         def clean_first_name(self):
             return self.cleaned_data['first_name'].capitalize()
