@@ -24,8 +24,8 @@
         };
 
         function loadCoordinates() {
-            let user_id = $("#map").data("user-id");
-            $.ajax('/api/users/' + user_id, {
+            let user = $("#map").data("user-id");
+            $.ajax('/api/users/' + user, {
                 'method': 'GET',
                 'username': 'admin1',
                 'password': 'AdminPassword',
