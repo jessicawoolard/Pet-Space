@@ -28,7 +28,7 @@ def signup(request):
             user.is_active = False
 
             # Geocode Address
-            client = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
+            client = googlemaps.Client(key='AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ')
             geocode_result = client.geocode(user.full_address())
             user.latitude = geocode_result[0]['geometry']['location']['lat']
             user.longitude = geocode_result[0]['geometry']['location']['lng']
