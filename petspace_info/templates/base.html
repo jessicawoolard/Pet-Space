@@ -11,6 +11,7 @@
               crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ&callback=initMap"></script>
 
         <title>Pet Space</title>
     </head>
@@ -51,10 +52,8 @@
             </footer>
         </div>
 
-        <script
-                src="http://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
                 integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
                 crossorigin="anonymous"></script>
@@ -62,17 +61,7 @@
                 integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
         <script src="{% static 'js/parsley.js' %}"></script>
-
         <script src="{% static 'js/main.js' %}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf4iMCdsQwy3qhO-7SqUw4IcwHu5GqjlE&callback=initMap"></script>
-        <script>
-            (function ($) {
-                $(function () {
-                    $('#form_signup_form').parsley();
-
-                });
-            }(jQuery));
-        </script>
 
 
     </body>
