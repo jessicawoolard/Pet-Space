@@ -14,10 +14,6 @@ class CustomUser(AbstractUser):
     latitude = models.FloatField()
     longitude = models.FloatField()
 
-    def save(self, *args, **kwargs):
-        self.my_float = round(self.my_float, 1)
-        super(CustomUser, self).save(*args, **kwargs)
-
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
