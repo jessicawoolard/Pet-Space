@@ -30,17 +30,18 @@
             <img class='pet_profile_picture img-thumbnail img-fluid full-width margin-bottom'
                  src="{{ pet.picture.url }}" alt="#">
             <a class="pet_space_button btn-block" href="mailto:{{ email_address }}">Email my Owner</a>
-            {% if user.is_authinticated %}
             <div class="text-center">
-                {% qr_from_text url_string options=my_options %}
+{#                {% if user.is_authinticated %}#}
+                    {% qr_from_text url_string options=my_options %}
+{#                {% endif %}#}
             </div>
-            {% endif %}
         </div>
 
         <div class="col-sm-8">
             <h2>Location</h2>
             <div class="img-thumbnail margin-bottom">
-                <div class='map' id='map' data-latitude="{{ pet.user.latitude }}" data-longitude="{{ pet.user.longitude }}"></div>
+                <div class='map' id='map' data-latitude="{{ pet.user.latitude }}"
+                     data-longitude="{{ pet.user.longitude }}"></div>
             </div>
 
             <div class="card">
