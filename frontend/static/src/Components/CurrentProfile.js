@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
+import {Button, Card} from 'react-bootstrap';
+
 
 class CurrentProfile extends Component {
 
@@ -36,58 +38,57 @@ class CurrentProfile extends Component {
 
     render() {
 
-        // if (this.props.updateUser) {
-        //     first_name = this.props.updateUser.first_name;
-        // } else {
-        //     first_name = "";
-        // }
-        // let first_name = this.props.updateUser != null ? this.props.updateUser.first_name : "";
-        // let last_name = this.props.updateUser != null ? this.props.updateUser.last_name : "";
-        // let phone_number = this.props.updateUser != null ? this.props.updateUser.phone_number : "";
-        // let street_address = this.props.updateUser != null ? this.props.updateUser.street_address : "";
-        // let street_address_2 = this.props.updateUser != null ? this.props.updateUser.street_address_2 : "";
-        // let city = this.props.updateUser != null ? this.props.updateUser.city : "";
-        // let state = this.props.updateUser != null ? this.props.updateUser.state : "";
-        // let zip_code = this.props.updateUser != null ? this.props.updateUser.zip_code : "";
-
         return (
-            <table>
-                <tbody>
-                <tr>
-                    <td>First Name</td>
-                    <td>{this.state.first_name}</td>
-                </tr>
-                <tr>
-                    <td>Last Name</td>
-                    <td>{this.state.last_name}</td>
-                </tr>
-                <tr>
-                    <td>Phone Number</td>
-                    <td>{this.state.phone_number}</td>
-                </tr>
-                <tr>
-                    <td>Street Address</td>
-                    <td>{this.state.street_address}</td>
-                </tr>
-                <tr>
-                    <td>Street Address 2</td>
-                    <td>{this.state.street_address_2}</td>
-                </tr>
-                <tr>
-                    <td>City</td>
-                    <td>{this.state.city}</td>
-                </tr>
-                <tr>
-                    <td>State</td>
-                    <td>{this.state.state}</td>
-                </tr>
-                <tr>
-                    <td>Zip Code</td>
-                    <td>{this.state.zip_code}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div className='current_profile'>
+            <Card style={{width: '18rem'}} border="info">
+                <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                    <Card.Text>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td className='current_info'>First Name</td>
+                                <td className='current_info'>{this.state.first_name}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>Last Name</td>
+                                <td className='current_info'>{this.state.last_name}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>Phone Number</td>
+                                <td className='current_info'>{this.state.phone_number}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'> Street Address</td>
+                                <td className='current_info'>{this.state.street_address}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>Street Address 2</td>
+                                <td className='current_info'>{this.state.street_address_2}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>City</td>
+                                <td className='current_info'>{this.state.city}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>State</td>
+                                <td className='current_info'>{this.state.state}</td>
+                            </tr>
+                            <tr>
+                                <td className='current_info'>Zip Code</td>
+                                <td className='current_info'>{this.state.zip_code}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </Card.Text>
+                    <div>
+                    <a href="../../user_dashboard/"> <Button variant="success">Go back to dashboard</Button> </a>
+                </div>
 
+                </Card.Body>
+
+            </Card>
+            </div>
         );
     }
 }

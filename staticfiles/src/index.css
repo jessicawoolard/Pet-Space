@@ -7,8 +7,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.update_input{
+  margin-bottom: 20px;
+}
+.current_info {
+    margin: 20px;
+}
+.react_div {
+  padding-left: 20px;
+}
+.current_div {
+  padding-left: 100px;
+}
+.info_col {
+
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.App {
+  display: inline-flex;
+  width: 100%;
+}
+.row {
+  width: 100%;
+}
+.current_profile {
+  float: left;
+  height: 100px;
 }

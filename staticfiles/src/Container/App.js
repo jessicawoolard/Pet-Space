@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './../App.css';
 import UpdateForm from "./../Components/UpdateForm";
 import CurrentProfile from "../Components/CurrentProfile";
+import {Container} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 
 class App extends Component {
@@ -56,14 +59,21 @@ class App extends Component {
     render() {
         let user = this.state.user;
         return (
-            <div className="App">
-                <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
-                <CurrentProfile updateUser={user}/>
-                <button>
-                    <a href="../user_dashboard/"> Go back to dashboard </a>
-                </button>
+            <div className="Container">
+                <div className="App">
+                    <Row>
+                        <Col xs={12} md={4} className='info_col'>
+                            <CurrentProfile updateUser={user}/>
+                        </Col>
+                        <Col className='info_col justify-content-md-center'>
+                            <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
+                        </Col>
+
+                    </Row>
+
+                </div>
             </div>
-        );
+        )
     }
 }
 
