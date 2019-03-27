@@ -30,7 +30,7 @@
             <img class='pet_profile_picture img-thumbnail img-fluid full-width margin-bottom'
                  src="{{ pet.picture.url }}" alt="#">
             <a class="pet_space_button btn-block" href="mailto:{{ email_address }}">Email my Owner</a>
-            {% if user.authinticated %}
+            {% if user.is_authinticated %}
             <div class="text-center">
                 {% qr_from_text url_string options=my_options %}
             </div>
