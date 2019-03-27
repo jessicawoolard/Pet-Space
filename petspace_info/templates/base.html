@@ -10,6 +10,7 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/lightbox.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
 
         <title>Pet Space</title>
@@ -18,9 +19,6 @@
         <div class="container">
             <header>
                 <div class="brand_container">
-                    {% if user.is_authenticated %}
-                        <span class="user_greeting text-capitalize">Hi {{ user.first_name }}!</span>
-                    {% endif %}
                     <div class="brand">
                         <a href="{% url 'petspace_info:index' %}"><img alt="Pet Space Logo"
                                                                        src="{% static 'images/logo.png' %}"
@@ -29,25 +27,31 @@
                 </div>
                 {% include 'navigation_bar.html' %}
             </header>
+            <div style="min-height: 500px;">
             {% block content %}
 
             {% endblock %}
+            </div>
             <footer>
-                <div class="footer_navigation">
-                    <p><a href="{% url 'petspace:about_us' %}">About Us</a></p>
-                </div>
-                <div class="footer_navigation">
-                    <p><a href="{% url 'petspace:our_story' %}">Our Story</a></p>
-                </div>
-                <div class="footer_navigation">
-                    <p><i class="large material-icons">pets</i></p>
-                </div>
-                <div class="footer_navigation">
-                    <p><a href="{% url 'petspace:contact' %}">Contact</a></p>
-                </div>
-                <div class="footer_navigation">
-                    <p><a href="{% url 'petspace:photo_gallery' %}">Photo Gallery</a></p>
-                </div>
+                <div class="margin-bottom"></div>
+                <ul class="nav justify-content-center">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'petspace:about_us' %}">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'petspace:our_story' %}">Our Story</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'petspace_info:index' %}"><i class="large material-icons">pets</i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'petspace:contact' %}">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'petspace:photo_gallery' %}">Photo Gallery</a>
+                  </li>
+                </ul>
+
             </footer>
         </div>
 
@@ -60,9 +64,16 @@
                 integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
         <script src="{% static 'js/parsley.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ&callback=initMap"></script>
+        <script src="{% static 'js/lightbox.js' %}"></script>
 
+        <script>
+            lightbox.option({
+              'resizeDuration': 200,
+              'wrapAround': true
+            })
+        </script>
+        <script src="{% static 'js/main.js' %}"></script>
 
     </body>
 </html>

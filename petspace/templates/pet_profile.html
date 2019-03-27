@@ -7,7 +7,7 @@
         <ol class="breadcrumb" style="background-color: #ffffff;">
             <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
             {% if user.is_authenticated %}
-            <li class="breadcrumb-item"><a href="{% url 'petspace:dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'petspace:dashboard' %}">Dashboard</a></li>
             {% endif %}
             <li class="breadcrumb-item active" aria-current="page">{{ pet.name }}</li>
         </ol>
@@ -25,25 +25,42 @@
 
     <div class="row">
 
-        <div class="col-3">
-            <img class='pet_profile_picture img-thumbnail img-fluid full-width' src="{{ pet.picture.url }}" alt="#">
-            <div class="row">
-                <p>{{ pet.name }}</p>
-            </div>
-            <a class="pet_space_button full-width" href="mailto:{{ email_address }}">Email my Owner</a>
-            <div class="row">
+        <div class="col-sm-4">
+            <h2>{{ pet.name }}</h2>
+            <img class='pet_profile_picture img-thumbnail img-fluid full-width margin-bottom'
+                 src="{{ pet.picture.url }}" alt="#">
+            <a class="pet_space_button btn-block" href="mailto:{{ email_address }}">Email my Owner</a>
+            <div class="text-center">
                 {% qr_from_text url_string options=my_options %}
             </div>
         </div>
 
-        <div class="col-9">
-            <div class='map' id='map' data-user-id="{{ pet.user_id }}"></div>
-
-            <div class="row">
-                Type of Animal: {{ pet.type_of_animal }}
+        <div class="col-sm-8">
+            <h2>Location</h2>
+            <div class="img-thumbnail margin-bottom">
+                <div class='map' id='map' data-latitude="{{ pet.user.latitude }}" data-longitude="{{ pet.user.longitude }}"></div>
             </div>
-            <div class="row">
-                Description: {{ pet.description }}
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Stats</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-responsive">
+                        <tr>
+                            <td class="text-right" style="width: 25%"><strong>Type of Animal</strong></td>
+                            <td style="width: 75%"> {{ pet.type_of_animal }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>Description</strong></td>
+                            <td>{{ pet.description }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>Hobbies</strong></td>
+                            <td>{{ pet.hobbies }}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 

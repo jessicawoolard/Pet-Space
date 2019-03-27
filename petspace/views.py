@@ -56,7 +56,7 @@ class PetProfileView(TemplateView):
             client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
             print('Sending a message...')
-            client.messages.create(to=phone_number, from_="+12028519104", body=pet.name + "'s" + ' ' +  "QR code has been scanned")
+            client.messages.create(to=phone_number, from_="+12028519104", body=pet.name + "'s" + ' ' + "QR code has been scanned")
 
         # gmaps = googlemaps.Client(key=GOOGLE_MAPS_API_KEY)
         # geocode_result = gmaps.geocode(user.street_address)
@@ -116,3 +116,13 @@ class OurStoryView(TemplateView):
 
 class PhotoGalleryView(TemplateView):
     template_name = 'photo_gallery.html'
+
+    def get_context_data(self, **kwargs):
+        pets = Pet.objects.all()
+        images = []
+        for pet in pets:
+            images.append(pet.picture)
+        context = {
+            'images': images
+        }
+        return context

@@ -13,7 +13,9 @@ from django.contrib.auth import get_user_model
 import googlemaps
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
 from django.urls import reverse_lazy
+from decimal import Decimal
 
 GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
@@ -30,8 +32,8 @@ def signup(request):
             # Geocode Address
             client = googlemaps.Client(key='AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ')
             geocode_result = client.geocode(user.full_address())
-            user.latitude = geocode_result[0]['geometry']['location']['lat']
-            user.longitude = geocode_result[0]['geometry']['location']['lng']
+            user.latitude = round(geocode_result[0]['geometry']['location']['lat'], 4)
+            user.longitude = round(geocode_result[0]['geometry']['location']['lng'], 4)
 
             user.save()
             current_site = get_current_site(request)
@@ -72,3 +74,5 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
+class RedirectView(TemplateView):
+    template_name = 'registration/signup_redirect.html'

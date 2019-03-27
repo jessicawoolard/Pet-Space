@@ -23,25 +23,35 @@
             });
         };
 
-        function loadCoordinates() {
-            let user = $("#map").data("user-id");
-            $.ajax('/api/users/' + user, {
-                'method': 'GET',
-                'username': 'admin1',
-                'password': 'AdminPassword',
-                'success': function (data) {
-                    let latitude = data["latitude"];
-                    let longitude = data["longitude"];
-                    initMap(latitude, longitude)
-                },
-                'error': function (xhr) {
-                    console.log(xhr.statusText);
-                }
-            });
-        }
+        let mapElement = $("#map");
+        let latitude = mapElement.data("latitude");
+        let longitude = mapElement.data("longitude");
 
-        loadCoordinates();
+        setTimeout(function() {
+            initMap(latitude, longitude);
+        }, 1000);
+
+
+
+        // function loadCoordinates() {
+        //     let user = $("#map").data("user-id");
+        //     $.ajax('/api/users/' + user, {
+        //         'method': 'GET',
+        //         'success': function (data) {
+        //             let latitude = data["latitude"];
+        //             let longitude = data["longitude"];
+        //             initMap(latitude, longitude)
+        //         },
+        //         'error': function (xhr) {
+        //             console.log(xhr.statusText);
+        //         }
+        //     });
+        // }
+        //
+        // loadCoordinates();
 
     });
 }(jQuery));
+
+
 

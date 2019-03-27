@@ -45,9 +45,4 @@ class CustomUserChangeForm(UserChangeForm):
 
     def clean_city(self):
         return self.cleaned_data['city'].capitalize()
-        #
-
-
-
-
 
