@@ -40,49 +40,41 @@ class CurrentProfile extends Component {
 
         return (
             <div className='current_profile'>
-            <Card style={{width: '18rem'}} border="info">
+            <Card>
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Current Profile</Card.Title>
                     <Card.Text>
                         <table>
                             <tbody>
                             <tr>
-                                <td className='current_info'>First Name</td>
                                 <td className='current_info'>{this.state.first_name}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>Last Name</td>
                                 <td className='current_info'>{this.state.last_name}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>Phone Number</td>
                                 <td className='current_info'>{this.state.phone_number}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'> Street Address</td>
                                 <td className='current_info'>{this.state.street_address}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>Street Address 2</td>
                                 <td className='current_info'>{this.state.street_address_2}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>City</td>
                                 <td className='current_info'>{this.state.city}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>State</td>
                                 <td className='current_info'>{this.state.state}</td>
                             </tr>
                             <tr>
-                                <td className='current_info'>Zip Code</td>
                                 <td className='current_info'>{this.state.zip_code}</td>
                             </tr>
                             </tbody>
                         </table>
                     </Card.Text>
                     <div>
-                    <a href="../../user_dashboard/"> <Button variant="success">Go back to dashboard</Button> </a>
+                    <a href="../../user_dashboard/"> <Button variant="info">Dashboard</Button> </a>
                 </div>
 
                 </Card.Body>

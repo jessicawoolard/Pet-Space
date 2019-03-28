@@ -1,24 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Login</h2>
-    <form method="post" action="{% url 'login' %}" >
-        {% csrf_token %}
-        {{ form.as_p }}
-          <button type="submit">Login</button>
-        <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}" />
-        <div>
-            <a href="{% url 'password_reset' %}">Forgot Password?</a>
-        </div>
-    <div>
-        Don't have an account?
-        <button>
-            <a href="{% url 'accounts:signup' %}">Sign Up</a>
-        </button>
-    </div>
-    <div>
-        <button><a href="{% url 'petspace_info:index' %}">Go back Home</a></button>
+    {% load static %}
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #ffffff;">
+            <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Login</li>
+        </ol>
+    </nav>
 
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <h2>Login</h2>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <table class="table table-hover table-bordered">
+                    {% for field in form %}
+
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}
+                                {% if field.help_text %}
+                                    <small style="display: none">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td><button class="pet_space_button" type="submit">Login</button> <a class="pet_space_button" href="{% url 'password_reset' %}">Forgot Password?</a></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}"/>
+            </form>
+            <p></p>
+        </div>
     </div>
-    </form>
+
+{#    <h2>Login</h2>#}
+{##}
+{#    <form method="post" action="{% url 'login' %}">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <button type="submit">Login</button>#}
+{#        <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}"/>#}
+{#        <div>#}
+{#            <a href="{% url 'password_reset' %}">Forgot Password?</a>#}
+{#        </div>#}
+{#        <div>#}
+{#            Don't have an account?#}
+{#            <button>#}
+{#                <a href="{% url 'accounts:signup' %}">Sign Up</a>#}
+{#            </button>#}
+{#        </div>#}
+{#        <div>#}
+{#            <button><a href="{% url 'petspace_info:index' %}">Go back Home</a></button>#}
+{##}
+{#        </div>#}
+{#    </form>#}
 {% endblock %}

@@ -61,16 +61,14 @@ class App extends Component {
         return (
                 <div className="App">
                     <div className="Container">
-                    <Row>
-                        <Col xs={12} md={4} className='info_col'>
+                    <Row className="col">
+                        <Col sm={3}>
                             <CurrentProfile updateUser={user}/>
                         </Col>
-                        <Col className='info_col'>
+                        <Col sm={9}>
                             <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
                         </Col>
-
                     </Row>
-
                 </div>
             </div>
         )

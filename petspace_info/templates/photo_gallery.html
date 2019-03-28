@@ -3,7 +3,15 @@
 {% block content %}
     {% load static %}
 
+    <nav class="breadcrumbs" aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #ffffff;">
+            <li class="breadcrumb-item"><a href="{% url 'petspace_info:index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Photo Gallery</li>
+        </ol>
+    </nav>
+
     <h1>Photo Gallery</h1>
+    <br>
 
     {% for image in images %}
     <a href="{{ image.url }}" data-lightbox="roadtrip">

@@ -31,9 +31,7 @@
                  src="{{ pet.picture.url }}" alt="#">
             <a class="pet_space_button btn-block" href="mailto:{{ email_address }}">Email my Owner</a>
             <div class="text-center">
-{#                {% if user.is_authinticated %}#}
-                    {% qr_from_text url_string options=my_options %}
-{#                {% endif %}#}
+                {% qr_from_text url_string options=my_options %}
             </div>
         </div>
 

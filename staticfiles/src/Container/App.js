@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './../App.css';
 import UpdateForm from "./../Components/UpdateForm";
 import CurrentProfile from "../Components/CurrentProfile";
-import {Container} from 'react-bootstrap';
+// import {Container} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 
@@ -59,18 +59,16 @@ class App extends Component {
     render() {
         let user = this.state.user;
         return (
-            <div className="Container">
                 <div className="App">
-                    <Row>
-                        <Col xs={12} md={4} className='info_col'>
+                    <div className="Container">
+                    <Row className="col">
+                        <Col sm={3}>
                             <CurrentProfile updateUser={user}/>
                         </Col>
-                        <Col className='info_col justify-content-md-center'>
+                        <Col sm={9}>
                             <UpdateForm onUpdate={this.updateUser} updateUser={user}/>
                         </Col>
-
                     </Row>
-
                 </div>
             </div>
         )

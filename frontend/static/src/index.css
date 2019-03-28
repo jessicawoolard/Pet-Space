@@ -8,10 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .update_input{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .current_info {
     margin: 20px;
+    padding-bottom: 10px;
 }
 .react_div {
   padding-left: 20px;
@@ -19,10 +20,21 @@ body {
 .current_div {
   padding-left: 100px;
 }
-.info_col {
+/*.info_col {*/
+  /*background-color: red;*/
+/*}*/
 
+.col-sm-3 {
+  float: left;
 }
 
+.col-sm-9 {
+  float: right;
+}
+
+.border-info {
+  border-color: #dddddd !important;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -32,10 +44,10 @@ code {
   display: inline-flex;
   width: 100%;
 }
-.row {
-  width: 100%;
-}
-.current_profile {
-  float: left;
-  height: 100px;
-}
+/*.row {*/
+  /*width: 100%;*/
+/*}*/
+/*.current_profile {*/
+  /*float: left;*/
+  /*height: 100px;*/
+/*}*/
