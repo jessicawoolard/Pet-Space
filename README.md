@@ -15,7 +15,8 @@ Technologies/ libraries used:
 * Django QR Code 
 * Django phone field 
 * Gunicorn 
-
+* Whitenoise 
+* Postgres
 
 API's used:
 * Twilio
