@@ -6,6 +6,7 @@ from .serializer import UserSerializer
 from accounts.models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.authentication import SessionAuthentication
+import googlemaps
 
 
 class UserViewSet(ModelViewSet):
@@ -28,6 +29,15 @@ class UpdateUserViewset(LoginRequiredMixin, RetrieveModelMixin, UpdateModelMixin
 
     def get_object(self):
         return self.request.user
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        client = googlemaps.Client(key='AIzaSyAI7UpjEWT4Zw6yHTcXF6HPXEcjCjZrlxQ')
+        geocode_result = client.geocode(instance.full_address())
+        instance.latitude = geocode_result[0]['geometry']['location']['lat']
+        instance.longitude = geocode_result[0]['geometry']['location']['lng']
+
+        instance.save()
 
 
 

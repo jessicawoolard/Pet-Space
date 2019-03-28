@@ -67,8 +67,8 @@ class PetProfileView(TemplateView):
             'my_options': my_options,
             'url_string': url_string,
             "email_address": user.email,
-            "latitude": user.latitude,
-            "longitude": user.longitude
+            "latitude": user.latitude + .01,
+            "longitude": user.longitude + .01
         }
         return context
 
