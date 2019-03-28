@@ -51,7 +51,7 @@ def signup(request):
             email.send()
             # Redirect to the a new page/template that shows a boostrap alert and then when they click okay, redirect to home screen.
             # Or set a timeout to redirect to home screen set_timeout() -> window.location = "127.0.0.1.... etc"
-            index = reverse('petspace_info:index', args='')
+            index = reverse('accounts:redirect', args='')
             return HttpResponseRedirect(index)
     else:
         form = SignupForm()

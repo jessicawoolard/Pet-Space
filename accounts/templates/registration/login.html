@@ -33,11 +33,19 @@
                                     <p style="color: red">{{ error }}</p>
                                 {% endfor %}
                             </td>
+
                         </tr>
                     {% endfor %}
                     <tr>
                         <td></td>
-                        <td><button class="pet_space_button" type="submit">Login</button> <a class="pet_space_button" href="{% url 'password_reset' %}">Forgot Password?</a></td>
+                        <td>
+                            <button class="pet_space_button" type="submit">Login</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+
+                        <td><button class="pet_space_button" type="submit" href="{% url 'password_reset' %}">Forgot Password</button></td>
                     </tr>
                 </table>
                 <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}"/>

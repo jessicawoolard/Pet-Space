@@ -66,9 +66,10 @@ class UpdateForm extends Component {
                                                                  onChange={this.handleChange}
                                                                  value={this.state.first_name}
                                                                  placeholder={'First name'} autoCapitalize/></div>
-                            <div className="update_input"><input type="text" onChange={this.handleChange} name="last_name"
-                                       value={this.state.last_name}
-                                       placeholder={'Last name'} autoCapitalize/></div>
+                            <div className="update_input"><input type="text" onChange={this.handleChange}
+                                                                 name="last_name"
+                                                                 value={this.state.last_name}
+                                                                 placeholder={'Last name'} autoCapitalize/></div>
                             <div className="update_input"><input type="text" onChange={this.handleChange}
                                                                  name="phone_number"
                                                                  value={this.state.phone_number}
@@ -77,9 +78,11 @@ class UpdateForm extends Component {
                                                                  name="street_address"
                                                                  value={this.state.street_address}
                                                                  placeholder={'Street address'} autoCapitalize/></div>
-                            <div className="update_input"><input type="text" onChange={this.handleChange} name="street_address_2"
-                                       value={this.state.street_address_2} placeholder={'Street address cont'}
-                                       autoCapitalize/></div>
+                            <div className="update_input"><input type="text" onChange={this.handleChange}
+                                                                 name="street_address_2"
+                                                                 value={this.state.street_address_2}
+                                                                 placeholder={'Street address cont'}
+                                                                 autoCapitalize/></div>
                             <div className="update_input"><input type="text" onChange={this.handleChange} name="city"
                                                                  value={this.state.city}
                                                                  placeholder={'City'} autoCapitalize/></div>
