@@ -49,8 +49,7 @@ def signup(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            # Redirect to the a new page/template that shows a boostrap alert and then when they click okay, redirect to home screen.
-            # Or set a timeout to redirect to home screen set_timeout() -> window.location = "127.0.0.1.... etc"
+
             index = reverse('accounts:redirect', args='')
             return HttpResponseRedirect(index)
     else:
