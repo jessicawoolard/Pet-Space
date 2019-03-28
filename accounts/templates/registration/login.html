@@ -10,7 +10,10 @@
     </nav>
 
     <div class="row">
+
         <div class="col-sm-4">
+            <img class='pet_profile_picture img-thumbnail img-fluid full-width margin-bottom'
+                 src="{% static 'images/adorable.jpg' %}" alt="#">
         </div>
         <div class="col-sm-8">
             <h2>Login</h2>
@@ -42,26 +45,4 @@
             <p></p>
         </div>
     </div>
-
-{#    <h2>Login</h2>#}
-{##}
-{#    <form method="post" action="{% url 'login' %}">#}
-{#        {% csrf_token %}#}
-{#        {{ form.as_p }}#}
-{#        <button type="submit">Login</button>#}
-{#        <input type="hidden" name="next" value="{% url 'petspace:dashboard' %}"/>#}
-{#        <div>#}
-{#            <a href="{% url 'password_reset' %}">Forgot Password?</a>#}
-{#        </div>#}
-{#        <div>#}
-{#            Don't have an account?#}
-{#            <button>#}
-{#                <a href="{% url 'accounts:signup' %}">Sign Up</a>#}
-{#            </button>#}
-{#        </div>#}
-{#        <div>#}
-{#            <button><a href="{% url 'petspace_info:index' %}">Go back Home</a></button>#}
-{##}
-{#        </div>#}
-{#    </form>#}
 {% endblock %}
